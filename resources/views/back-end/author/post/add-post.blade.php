@@ -12,7 +12,7 @@
                         Add Post
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('new-post') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('author.new-post') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label for="" class=" col-form-label col-md-3">Categories</label>
@@ -69,7 +69,7 @@
                                 <input type="submit" class="btn btn-success" value="Add Post">
                             </div>
                             <div>
-                                <a href="{{ route('manage-post') }}" class="btn btn-warning">Back</a>
+                                <a href="{{ route('author.manage-post') }}" class="btn btn-warning">Back</a>
                             </div>
                         </form>
                     </div>

@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12"> 
-                <a href="{{ route('author.add-post') }}" class="btn btn-success"><i class="fas fa-plus-square"></i> Add Post</a>
+                <a href="{{ route('add-post') }}" class="btn btn-success"><i class="fas fa-plus-square"></i> Add Post</a>
                 <hr><br>
                 <h5>All Posts <span class="badge badge-info">{{ $posts->count() }}</span></h5>
                 
@@ -46,16 +46,17 @@
                                         @endif
                                     </td>
                                     <td>
-                                       <a href="{{ route('author.details-post', ['id'=>$post->id]) }}" class=" badge badge-secondary" title="View"><i class="fas fa-eye"></i> </a>
+                                       <a href="{{ route('approve-post', ['id'=>$post->id]) }}" class=" badge badge-success" title="Approve"><i class="fas fa-check"></i> </a>
+                                       <a href="{{ route('details-post', ['id'=>$post->id]) }}" class=" badge badge-secondary" title="View"><i class="fas fa-eye"></i> </a>
                                        @if($post->publication_status == 1)
-                                        <a href="{{ route('author.unpublish-post', ['id'=>$post->id]) }}" class=" badge badge-success" title="Unpublish"><i class="fas fa-arrow-up"></i> </a>
+                                        <a href="{{ route('unpublish-post', ['id'=>$post->id]) }}" class=" badge badge-success" title="Unpublish"><i class="fas fa-arrow-up"></i> </a>
                                        @else
-                                        <a href="{{ route('author.publish-post', ['id'=>$post->id]) }}" class=" badge badge-warning" title="Publish"><i class="fas fa-arrow-down"></i> </a>
+                                        <a href="{{ route('publish-post', ['id'=>$post->id]) }}" class=" badge badge-warning" title="Publish"><i class="fas fa-arrow-down"></i> </a>
                                        @endif
-                                        <a href="{{ route('author.edit-post', ['id'=>$post->id]) }}" class=" badge badge-info" title="Edit"><i class="fas fa-edit"></i> </a>
+                                        <a href="{{ route('edit-post', ['id'=>$post->id]) }}" class=" badge badge-info" title="Edit"><i class="fas fa-edit"></i> </a>
                                         <a href="#" class="badge badge-danger" title="Delete" onclick="deleteData({{ $post->id }})"><i class="fas fa-trash-alt"></i> </a>
         
-                                        <form id="delete-form-{{ $post->id }}" action="{{ route('author.delete-post', ['id'=>$post->id]) }}" method="POST" style="display:none; ">
+                                        <form id="delete-form-{{ $post->id }}" action="{{ route('delete-post', ['id'=>$post->id]) }}" method="POST" style="display:none; ">
                                             @csrf
                                         </form>
                                     </td>

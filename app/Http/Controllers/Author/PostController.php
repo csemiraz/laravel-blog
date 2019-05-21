@@ -58,7 +58,7 @@ class PostController extends Controller
         Post::updatePostInfo($request, $imageName);
 
         Toastr::success('Post info updated successfully');
-        return redirect()->route('manage-post');
+        return redirect()->route('author.manage-post');
     }
 
     public function unpublishPost($id)
@@ -74,7 +74,7 @@ class PostController extends Controller
         $post->save();
 
         Toastr::success('Post info unpublished successfully');
-        return redirect()->route('manage-post');
+        return redirect()->route('author.manage-post');
     }
 
     public function publishPost($id)
@@ -90,7 +90,7 @@ class PostController extends Controller
         $post->save();
 
         Toastr::success('Post info published successfully');
-        return redirect()->route('manage-post');
+        return redirect()->route('author.manage-post');
     }
 
     public function deletePost($id)
@@ -130,6 +130,8 @@ class PostController extends Controller
 
         return view('back-end.author.post.details-post', compact('post'));
     }
+
+    
 
 
 

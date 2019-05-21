@@ -12,10 +12,12 @@ Post : Details Post
             <a href="{{ route('manage-post') }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Back</a>
             
             @if($post->approval_status == false)
-            <button type="button" class="btn btn-success float-right">
-                <i class="fas fa-check"></i>
-                <span>Approve</span>
-            </button>
+            <a href="{{ route('approve-post', ['id'=>$post->id]) }}">
+                <button type="button" class="btn btn-success float-right">
+                    <i class="fas fa-check"></i>
+                    <span>Approve</span>
+                </button>
+            </a>
             @else
             <button type="button" class="btn btn-success float-right" disabled>
                 <i class="fas fa-check"></i>

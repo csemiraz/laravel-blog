@@ -103,14 +103,16 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin','middleware'=>['auth','adm
     Route::post('/post/update-post', 'PostController@updatePost')->name('update-post');
     Route::post('/post/delete-post/{id}', 'PostController@deletePost')->name('delete-post');
     Route::get('/post/details-post/{id}', 'PostController@detailsPost')->name('details-post');
+    Route::get('/post/pending-post', 'PostController@pendingPost')->name('pending-post');
+    Route::get('/post/approve-post/{id}', 'PostController@approvePost')->name('approve-post');
 
 
 
 });
 
 /* Author Routes */
-Route::group(['prefix'=>'author', 'namespace'=>'Author','middleware'=>['auth','author']], function(){
-    Route::get('dashboard', 'AuthorController@index')->name('author.dashboard');
+Route::group(['as'=>'author.','prefix'=>'author', 'namespace'=>'Author','middleware'=>['auth','author']], function(){
+    Route::get('dashboard', 'AuthorController@index')->name('dashboard');
 
     /* Posts routing */
     Route::get('/post/manage-post', 'PostController@managePost')->name('manage-post');

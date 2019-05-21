@@ -50,20 +50,26 @@
              <i class="fas fa-fw fa-chart-area"></i>
              <span>Manage Post</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('pending-post') }}">
+             <i class="fas fa-fw fa-chart-area"></i>
+             <span>Manage Pending Post</span></a>
+        </li>
+
+        @endif
 
         <!-- Author Panel -->
-        @elseif(Auth::user()->role_id == 2)
+        @if(Auth::user()->role_id == 2)
         <div class="sidebar-heading">
           Author
         </div>
         <!-- Nav Item -->
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('manage-post') }}">
+          <a class="nav-link" href="{{ route('author.manage-post') }}">
             <i class="fas fa-tasks"></i>
             <span>Manage Post</span></a>
         </li>
 
-        
         @endif
   
           <!-- Nav Item - Pages Collapse Menu -->

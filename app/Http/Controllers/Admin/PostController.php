@@ -100,6 +100,22 @@ class PostController extends Controller
         return view('back-end.admin.post.details-post', compact('post'));
     }
 
+    public function pendingPost()
+    {
+        $posts = Post::where('approval_status', false)->latest()->get();
+        return view('back-end.admin.post.pending-post', compact('posts'));
+    }
+
+    public function approvePost($id)
+    {
+        $post = Post::find($id);
+        $post->approval_status = true;
+        $post->save();
+
+        Toastr::success('Post approved successfully', 'Success');
+        return redirect()->back();
+    }
+
 
 
 
