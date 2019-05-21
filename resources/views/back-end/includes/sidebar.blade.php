@@ -55,6 +55,11 @@
              <i class="fas fa-fw fa-chart-area"></i>
              <span>Manage Pending Post</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('manage-subscriber') }}">
+              <i class="fas fa-tasks"></i>
+            <span>Manage Subscriber</span></a>
+        </li>
 
         @endif
 

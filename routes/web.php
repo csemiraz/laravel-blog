@@ -21,6 +21,9 @@ Route::get('/', [
     'as' => '/'
 ]);
 
+/* Subscriber Routes */
+Route::post('/subscriber/new-subscriber', 'SubscriberController@newSubscriber')->name('new-subscriber');
+
 /* Admin Routes */
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin','middleware'=>['auth','admin']], function(){
     Route::get('dashboard', 'AdminController@index')->name('admin.dashboard');
@@ -106,6 +109,9 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin','middleware'=>['auth','adm
     Route::get('/post/pending-post', 'PostController@pendingPost')->name('pending-post');
     Route::get('/post/approve-post/{id}', 'PostController@approvePost')->name('approve-post');
 
+    /* Subscriber routing */
+    Route::get('/subscriber/manage-subscriber', 'SubscriberController@manageSubscriber')->name('manage-subscriber');
+    Route::post('/subscriber/delete-subscriber/{id}', 'SubscriberController@deleteSubscriber')->name('delete-subscriber');
 
 
 });

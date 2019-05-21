@@ -3,12 +3,13 @@
           <div class="row no-gutters">
             <div class="col-sm-6 col-lg-3 text-center px-3">
               <h5 class="bold">SUBSCRIBE</h5>
-              <p>and get <strong class="text-primary">10% discount</strong></p>
-              <form>
+              <p>and get <strong class="text-primary">latest posts</strong></p>
+              <form action="{{ route('new-subscriber') }}" method="POST">
+                @csrf
                 <div class="form-group">
-                  <input type="email" class="form-control rounded-pill text-center" placeholder="Enter your email">
+                  <input name="email" type="email" class="form-control rounded-pill text-center" placeholder="Enter your email">
                 </div>
-                <button type="button" class="btn btn-primary btn-block rounded-pill">SUBSCRIBE</button>
+                <button type="submit" class="btn btn-primary btn-block rounded-pill">SUBSCRIBE</button>
               </form>
             </div>
             <div class="col-6 col-lg-3">

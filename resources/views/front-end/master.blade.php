@@ -19,7 +19,10 @@
     <link rel="stylesheet" href="{{ asset('assets/front-end/') }}/plugins/noty/noty.min.css">
 
     <!-- Mimity CSS  -->
-    <link rel="stylesheet" href="{{ asset('assets/front-end/') }}/dist/css/style.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/front-end/') }}/dist/css/style.min.css"> 
+
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/toastr/build/toastr.min.css') }}">
 
     <title>Home - Mimity</title>
   </head>
@@ -114,6 +117,9 @@
 
     <!-- PLUGINS FOR CURRENT PAGE -->
     <script src="{{ asset('assets/front-end/') }}/plugins/swiper/swiper.min.js"></script>
+
+    <!--- Toastr plugin --->
+    <script src="{{ asset('assets/toastr/build/toastr.min.js') }}"></script>
     
 
     <!-- Main JS  -->
@@ -130,6 +136,19 @@
           App.colorOption()
         })
     </script>
+
+{!! Toastr::message() !!}
+  
+<script>
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+              toastr.error('{{ $error }}','Error',{
+                  closeButton:true,
+                  progressBar:true,
+               });
+        @endforeach
+    @endif
+</script>
     
 
   </body>
