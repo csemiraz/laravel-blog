@@ -9,7 +9,7 @@ Post : Details Post
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <a href="" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Back</a>
+            <a href="{{ route('manage-post') }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Back</a>
             
             @if($post->approval_status == false)
             <button type="button" class="btn btn-success float-right">

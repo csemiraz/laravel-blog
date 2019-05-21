@@ -20,7 +20,7 @@
         </li>
         @else 
         <li class="nav-item active">
-          <a class="nav-link" href="{{ route('author.dashboar') }}">
+          <a class="nav-link" href="{{ route('author.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
         </li>
@@ -29,7 +29,8 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
   
-        <!-- Heading -->
+        <!-- Admin Panel -->
+        @if(Auth::user()->role_id == 1)
         <div class="sidebar-heading">
           Admin
         </div>
@@ -49,6 +50,21 @@
              <i class="fas fa-fw fa-chart-area"></i>
              <span>Manage Post</span></a>
         </li>
+
+        <!-- Author Panel -->
+        @elseif(Auth::user()->role_id == 2)
+        <div class="sidebar-heading">
+          Author
+        </div>
+        <!-- Nav Item -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('manage-post') }}">
+            <i class="fas fa-tasks"></i>
+            <span>Manage Post</span></a>
+        </li>
+
+        
+        @endif
   
           <!-- Nav Item - Pages Collapse Menu -->
           <li class="nav-item">

@@ -80,7 +80,14 @@ class Post extends Model
         $post->description = $request->description;
         $post->image = $imageName;
         $post->publication_status = $request->publication_status;
-        $post->approval_status = true;
+        
+        if(Auth::user()->role_id == 1) {
+            $post->approval_status = true;
+        }
+        else {
+            $post->approval_status = false;
+        }
+
         $post->save();
 
         $post->categories()->attach($request->categories);
@@ -147,7 +154,14 @@ class Post extends Model
         $post->description = $request->description;
         $post->image = $imageName;
         $post->publication_status = $request->publication_status;
-        $post->approval_status = true;
+        
+        if(Auth::user()->role_id == 1) {
+            $post->approval_status = true;
+        }
+        else {
+            $post->approval_status = false;
+        }
+
         $post->save();
 
         $post->categories()->sync($request->categories);
