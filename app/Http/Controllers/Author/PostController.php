@@ -40,6 +40,12 @@ class PostController extends Controller
     public function editPost($id)
     {
         $post = Post::find($id);
+
+        if($post->user_id != Auth::id()) {
+            Toastr::error('Your are not authorized user to action this', 'Error');
+            return redirect()->back();
+        }
+
         $categories = Category::all();
         $tags = Tag::all();
         return view('back-end.author.post.edit-post', compact('post', 'categories', 'tags'));
@@ -58,6 +64,12 @@ class PostController extends Controller
     public function unpublishPost($id)
     {
         $post = Post::find($id);
+
+        if($post->user_id != Auth::id()) {
+            Toastr::error('Your are not authorized user to action this', 'Error');
+            return redirect()->back();
+        }
+
         $post->publication_status = 0;
         $post->save();
 
@@ -68,6 +80,12 @@ class PostController extends Controller
     public function publishPost($id)
     {
         $post = Post::find($id);
+
+        if($post->user_id != Auth::id()) {
+            Toastr::error('Your are not authorized user to action this', 'Error');
+            return redirect()->back();
+        }
+
         $post->publication_status = 1;
         $post->save();
 
@@ -78,6 +96,12 @@ class PostController extends Controller
     public function deletePost($id)
     {
         $post = Post::find($id);
+
+        if($post->user_id != Auth::id()) {
+            Toastr::error('Your are not authorized user to action this', 'Error');
+            return redirect()->back();
+        }
+
         if($post->image){
             if(file_exists('assets/images/post/single/'.$post->image)){
                 unlink('assets/images/post/single/'.$post->image);
@@ -98,6 +122,12 @@ class PostController extends Controller
     public function detailsPost ($id)
     {
         $post = Post::find($id);
+
+        if($post->user_id != Auth::id()) {
+            Toastr::error('Your are not authorized user to action this', 'Error');
+            return redirect()->back();
+        }
+
         return view('back-end.author.post.details-post', compact('post'));
     }
 
