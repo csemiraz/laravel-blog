@@ -11,16 +11,16 @@ Post : Details Post
         <div class="col-md-12">
             <a href="{{ route('author.manage-post') }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Back</a>
             
-            @if($post->approval_status == false)
-            <button type="button" class="btn btn-success float-right">
-                <i class="fas fa-check"></i>
-                <span>Approve</span>
-            </button>
-            @else
-            <button type="button" class="btn btn-success float-right" disabled>
+            @if($post->approval_status == true)
+            <span class="btn btn-success float-right">
                 <i class="fas fa-check"></i>
                 <span>Approved</span>
-            </button>
+            </span>
+            @else
+            <span class="btn btn-warning float-right">
+                <i class="fas fa-check"></i>
+                <span>Pending</span>
+            </span>
             @endif
 
             <hr>

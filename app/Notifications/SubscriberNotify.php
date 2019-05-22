@@ -11,14 +11,16 @@ class SubscriberNotify extends Notification
 {
     use Queueable;
 
+    public $post;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($post)
     {
-        //
+        $this->post = $post;
     }
 
     /**
@@ -41,8 +43,11 @@ class SubscriberNotify extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->subject('New Post Available')
+                    ->greeting('Hello, Subscriber!')
+                    ->line('There is a new post, Hope you like it')
+                    ->line('Post Title : '.$this->post->title)
+                    ->action('View Post', url(route('/')))
                     ->line('Thank you for using our application!');
     }
 

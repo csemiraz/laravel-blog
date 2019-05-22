@@ -2,12 +2,15 @@
 
 namespace App;
 
-use Carbon\Carbon;
-use Brian2694\Toastr\Facades\Toastr;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Model;
-
 use Image;
+use Carbon\Carbon;
+use App\Subscriber;
+use Brian2694\Toastr\Facades\Toastr;
+
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\SubscriberNotify;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Notification;
 
 class Post extends Model
 {
@@ -89,6 +92,14 @@ class Post extends Model
         }
 
         $post->save();
+
+        /* Send notification to subscriber about new post */
+        $subscribers = Subscriber::all();
+        foreach ($subscribers as $subscriber) {
+            Notification::route('mail', $subscriber->email)
+                        ->notify(new SubscriberNotify($post));
+        }
+
 
         $post->categories()->attach($request->categories);
         $post->tags()->attach($request->tags);

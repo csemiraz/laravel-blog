@@ -6,10 +6,13 @@ use App\Tag;
 use App\Post;
 
 use App\Category;
+use App\Subscriber;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Notifications\SubscriberNotify;
 use App\Notifications\AuthorPostApproved;
+use Illuminate\Support\Facades\Notification;
 
 class PostController extends Controller
 {
@@ -115,6 +118,13 @@ class PostController extends Controller
 
         /* Approved post notification to Author */
         $post->user->notify(new AuthorPostApproved($post));
+
+        /* Send notification to subscriber about new post */
+        $subscribers = Subscriber::all();
+        foreach ($subscribers as $subscriber) {
+            Notification::route('mail', $subscriber->email)
+                        ->notify(new SubscriberNotify($post));
+        }
 
         Toastr::success('Post approved successfully', 'Success');
         return redirect()->back();
