@@ -9,6 +9,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Notifications\AuthorPostApproved;
 
 class PostController extends Controller
 {
@@ -111,6 +112,9 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->approval_status = true;
         $post->save();
+
+        /* Approved post notification to Author */
+        $post->user->notify(new AuthorPostApproved($post));
 
         Toastr::success('Post approved successfully', 'Success');
         return redirect()->back();
