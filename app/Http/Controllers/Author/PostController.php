@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Author;
 use App\Tag;
 use App\Post;
 
+use App\User;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\AuthorNewPost;
+
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
+
 
 class PostController extends Controller
 {
@@ -31,7 +36,24 @@ class PostController extends Controller
     {
         Post::validatePost($request);
         $imageName = Post::imageFile($request);
-        Post::storePost($request, $imageName);
+        
+        $post = new Post();
+        $post->title = $request->title;
+        $post->slug = str_slug($request->title);
+        $post->user_id = Auth::id();
+        $post->description = $request->description;
+        $post->image = $imageName;
+        $post->publication_status = $request->publication_status;
+        $post->approval_status = false;
+        
+        $post->save();
+
+        $post->categories()->attach($request->categories);
+        $post->tags()->attach($request->tags);
+
+        /* Send Notification New Post Update To Admin */
+        $users = User::where('role_id', 1)->get();
+        Notification::send($users, new AuthorNewPost($post));
 
         Toastr::success('Post info saved successfully');
         return redirect()->back();
