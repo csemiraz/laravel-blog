@@ -19,7 +19,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', [
     'uses' => 'PublicController@index', 
     'as' => '/'
-]);
+]); 
 
 /* Subscriber Routes */
 Route::post('/subscriber/new-subscriber', 'SubscriberController@newSubscriber')->name('new-subscriber');
