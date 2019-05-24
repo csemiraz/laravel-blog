@@ -17,7 +17,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /* Public Routes */
 Route::get('/', [
-    'uses' => 'PublicController@index', 
+    'uses' => 'PublicController@index',  
     'as' => '/'
 ]); 
 
@@ -112,6 +112,10 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin','middleware'=>['auth','adm
     /* Subscriber routing */
     Route::get('/subscriber/manage-subscriber', 'SubscriberController@manageSubscriber')->name('manage-subscriber');
     Route::post('/subscriber/delete-subscriber/{id}', 'SubscriberController@deleteSubscriber')->name('delete-subscriber');
+
+    /* Settings routing */
+    Route::get('/profile', 'SettingsController@index')->name('profile');
+    Route::post('/profile/update-profile', 'SettingsController@updateProfile')->name('update-profile');
 
 
 });

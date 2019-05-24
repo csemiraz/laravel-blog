@@ -60,6 +60,21 @@
               <i class="fas fa-tasks"></i>
             <span>Manage Subscriber</span></a>
         </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-sliders-h"></i>
+                <span>SETTINGS</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('profile') }}">Profile</a>
+                <a class="collapse-item" href="">Logout</a>
+                </div>
+            </div>
+        </li>
 
         @endif
 
@@ -77,19 +92,6 @@
 
         @endif
   
-          <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                  <i class="fas fa-fw fa-folder"></i>
-                  <span>Pages</span>
-              </a>
-              <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                  <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item" href="">Login</a>
-                  <a class="collapse-item" href="">Register</a>
-                  </div>
-              </div>
-          </li>
   
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

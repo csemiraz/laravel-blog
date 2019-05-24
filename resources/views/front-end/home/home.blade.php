@@ -159,6 +159,8 @@
                 </div>
             </div>
 
+            <br>
+
             <div class="card mt-3">
                 <div class="card-header bg-white border-bottom bold roboto-condensed">
                 <h5 class="bold mb-0">POPULAR <span class="text-primary">TAGS</span></h5>
