@@ -72,11 +72,51 @@ Profile : Admin Profile
 
                 </div>
                 <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores, iusto?</p>
+
+                    <br><hr><br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form action="{{ route('change-password') }}" method="POST">
+                                        @csrf
+                                        <div class="form-group row">
+                                            <label for="" class=" col-form-label col-md-3">Old Password</label>
+                                            <div class="col-md-9">
+                                                <input type="password" name="old_password" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="" class=" col-form-label col-md-3">New Password</label>
+                                            <div class="col-md-9">
+                                                <input type="password" name="password" class="form-control">
+                                            </div>
+                                        </div>
+
+                                         <div class="form-group row">
+                                            <label for="" class=" col-form-label col-md-3">Confirm Password</label>
+                                            <div class="col-md-9">
+                                                <input type="password" name="password_confirmation" class="form-control">
+                                            </div>
+                                        </div>
+                                        
+
+                                        <div class="form-group row">
+                                            <div class="col-md-9 offset-md-3">
+                                                <input type="submit" class="btn btn-success" value="Change Password">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <br>
+
 @endsection

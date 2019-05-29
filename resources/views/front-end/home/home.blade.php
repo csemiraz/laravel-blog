@@ -82,6 +82,7 @@
                     <div class="small text-muted counter">
                     <i data-feather="heart"></i> 55
                     <i data-feather="message-square" class="ml-3"></i> 15
+                    <i style="font-size: 15px" class="fas fa-eye ml-3"></i> {{ $post->view_count }}
                     </div>
                     <a href="blog-single.html" class="bold">READ MORE</a>
                 </div>

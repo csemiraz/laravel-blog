@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700">
 
+    <!-- Custom fonts for this template-->
+    <link href="{{ asset('assets/back-end/')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
     <!-- REQUIRED CSS: BOOTSTRAP, METISMENU, PERFECT-SCROLLBAR  -->
     <link rel="stylesheet" href="{{ asset('assets/front-end/') }}/dist/css/vendor.min.css">
 

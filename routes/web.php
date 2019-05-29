@@ -116,6 +116,7 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin','middleware'=>['auth','adm
     /* Settings routing */
     Route::get('/profile', 'SettingsController@index')->name('profile');
     Route::post('/profile/update-profile', 'SettingsController@updateProfile')->name('update-profile');
+    Route::post('/change-password', 'SettingsController@changePassword')->name('change-password');
 
 
 });
